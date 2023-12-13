@@ -4,6 +4,7 @@ const AppError = require('../utils/error.utils');
 
 const getData = asyncHandler(async (req, res, next) => {
     try {
+        console.log('get data :', req);
         const todos = await Todo.find();
         res.status(201).json({
             success: true,
@@ -20,6 +21,7 @@ const getData = asyncHandler(async (req, res, next) => {
 
 const postData = asyncHandler(async (req, res, next) => {
     // console.log('Received todo:', req.body);
+    console.log('post data :', req);
     const todo = new Todo({
         text: req.body.text,
     });
@@ -41,6 +43,7 @@ const postData = asyncHandler(async (req, res, next) => {
 const deleteData = asyncHandler(async (req, res, next) => {
     const { id } = req.params; // Corrected from key_id to id
     try {
+        console.log('delete data :', req);
         await Todo.findByIdAndDelete(id);
 
         res.status(201).json({
@@ -57,7 +60,8 @@ const deleteData = asyncHandler(async (req, res, next) => {
 const updateData = asyncHandler(async (req, res, next) => {
     const {id} = req.params;
     const {  text } = req.body;
-    console.log(id, text);
+    // console.log(id, text);
+    console.log('update data :', req);
     try {
         const todo = await Todo.findByIdAndUpdate(
               id,
@@ -79,6 +83,7 @@ const updateData = asyncHandler(async (req, res, next) => {
 
 const status = asyncHandler(async (req, res, next) => {
     const { id } = req.params;
+    console.log('status data :', req);
     try {
         const todo = await Todo.findById(id);
         todo.completed = !todo.completed;
