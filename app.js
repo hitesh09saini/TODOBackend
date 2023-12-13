@@ -6,11 +6,6 @@ const cors = require('cors');
 
 const app = express();
 
-const corsOptions = {
-  origin: [process.env.CLIENT_URL],
-  credentials: true, // Use 'credentials' instead of 'Credentials'
-  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE', // Explicitly specify allowed methods
-};
 
 // config
 app.use(express.json({ limit: "16kb" }))
