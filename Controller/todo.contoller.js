@@ -64,7 +64,6 @@ const deleteData = asyncHandler(async (req, res, next) => {
 const updateData = asyncHandler(async (req, res, next) => {
     const { id } = req.params;
     const { text } = req.body;
-    // console.log(id, text);
     console.log('update data :');
     try {
         const todo = await Todo.findByIdAndUpdate(
